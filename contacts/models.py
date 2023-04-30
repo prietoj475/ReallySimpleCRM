@@ -12,4 +12,4 @@ class Contact(models.Model):
     city = models.CharField(max_length=64, blank=True)
     state = models.CharField(max_length=47, blank=True)
     zipcode = models.CharField(max_length=5, blank=True)
-    profile_pic = models.ImageField(upload_to='profile_picture', default='static/nopic.png')
+    profile_pic = models.ImageField(upload_to="profile_pics", null=True, default='static/nopic.png')
