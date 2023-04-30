@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% for contact in contact_list %}
+    <a href="{% url 'contacts:detailcontacts' contact.id %}" class="list-group-item list-group-item-action">
+    {{ contact.first_name|truncatechars:30 }} - {{ contact.last_name|truncatechars:30 }}
+    {% if contact.email %} -
+        {{ contact.email|truncatechars:30 }}
+    {% endif %}
+    {% if contact.address_1 %} -
+        {{ contact.address_1|truncatechars:30 }}
+    {% endif %}
+    {% if contact.address_2 %} -
+        {{ contact.address_2|truncatechars:30 }}
+    {% endif %}
+    {% if contact.city %} -
+        {{ contact.city|truncatechars:30 }}
+    {% endif %}
+    {% if contact.state %} -
+        {{ contact.state|truncatechars:30 }}
+    {% endif %}
+    {% if contact.zipcode %} -
+        {{ contact.zipcode|truncatechars:30 }}
+    {% endif %}
+    {% if contact.profile_pic %} -
+        {{ contact.profile_pic|truncatechars:30 }}
+    {% endif %}
+    </a>
+{% empty %}
+    No objects found.
+{% endfor %}
+
+{% endblock %}

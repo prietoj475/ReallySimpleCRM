@@ -1,0 +1,4 @@
+.venv
+.DS_Store
+db.sqlite3
+media/contacts

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+{{ contact.first_name }} - {{ contact.last_name }} - {{ contact.email }}
+<img src="{{ contact.profile_pic }}" alt="img">
+
+<a href="{% url 'contacts:deletecontacts' pk=contact.pk %}">delete</a>
+<a href="{% url 'contacts:updatecontacts' pk=contact.pk %}">update</a>
+{% endblock %}

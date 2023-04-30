@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+</head>
+<body>
+  <nav class="navbar bg-dark" data-bs-theme="dark">
+    <div class="container">
+      {% if user.is_authenticated %}
+          <a class="navbar-brand" href="{% url 'contacts:listcontacts' %}">
+            <span>RealSimpleCRM</span>
+          </a>
+      {% else %}
+          <a class="navbar-brand" href="{% url 'accounts:loginuser' %}">
+              <span>RealSimpleCRM</span>
+          </a>
+      {% endif %}
+    </div>
+    <div class="navbar-nav ms-auto">
+      {% if user.is_authenticated %}
+          <a href="{% url 'contacts:listcontacts' %}" class="navbar-brand btn btn-primary btn-rounded btn-md">Contacts</a>
+          <form id="SignOutform" style='display: none;' method="POST" action="{% url 'accounts:logoutuser' %}">
+              {% csrf_token %} 
+          </form>
+          <span class="navbar-brand">
+              <button type="submit" form="SignOutform" class="button is-primary is-1"><strong>Sign Out</strong></button>
+          </span>
+      {% else %} 
+          <a class="navbar-brand" href="{% url 'accounts:loginuser' %}">
+            Login
+          </a>
+          <a href="{% url 'accounts:register' %}" class="navbar-brand">
+          <strong>Sign up</strong>
+          </a>
+      {% endif %}
+    </div>
+  </nav>
+
+  <div class="container">
+      {% block content %}{% endblock %}
+  </div>
+</body>
+
+</html>

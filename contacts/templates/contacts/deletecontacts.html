@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <p>Are you sure you want to delete "{{ contact.first_name }}"?</p>
+    <button type="submit">Delete</button>
+    <a href="{% url 'contacts:detailcontacts' contact.id %}">Cancel</a>
+</form>
+{% endblock %}
