@@ -7,6 +7,8 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def register(request):
+    if request.user.is_authenticated:
+        return redirect('contacts:listcontacts')
     if request.method == 'GET':
         return render(request, 'auth/register.html', {'form':UserCreationForm()})
     else:
@@ -23,6 +25,8 @@ def register(request):
             return render(request, 'auth/register.html', {'form':UserCreationForm(), 'error': 'Passwords did not match'})
 
 def loginuser(request):
+    if request.user.is_authenticated:
+        return redirect('contacts:listcontacts')
     if request.method == 'GET':
         return render(request, 'auth/loginuser.html', {'form':AuthenticationForm()})
     else:

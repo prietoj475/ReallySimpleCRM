@@ -7,7 +7,6 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.urls import reverse_lazy
 
-# login_url='/accounts/login/'
 @method_decorator(login_required, name='dispatch')
 class ContactsListView(generic.ListView):
     context_object_name = 'contact_list'
