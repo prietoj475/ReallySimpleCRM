@@ -7,53 +7,53 @@
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="card-body">
-                    <h2 class="card-title text-center">Contact Information</h2>
+                    <h2 class="card-title text-center text-white">Contact Information</h2>
                     <div class="row">
                         <div class="container py-5 h-100 text-center">
-                            <label for="fileField"><img src="{{ contact.profile_pic.url }}"
-                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" /></label>
-                            <input type="file" id="fileField" accept="media/profile_pic" name="profile_pic" style="font-size: 1.2em;" hidden="true">
+                            <label class="select" for="fileField"><img src="{{ contact.profile_pic.url }}"
+                            class="rounded-circle img-fluid" style="object-fit: cover; width: 200px; height: 200px;" /></label>
+                            <input type="file" id="fileField" accept="media/profile_pic" name="profile_pic" onchange="loadFile(event)" style="font-size: 1.2em;" hidden="true">
                         </div>
                         <div class="col">
                             <label for="first-name">First Name</label>
-                            <input type="text" class="form-control" name="first_name" id="first_name" value="{{ form.first_name.value }}" placeholder="Enter first name" required>
+                            <input type="text" class="form-control text-white" name="first_name"  value="{{ form.first_name.value }}" placeholder="Enter first name" required>
                         </div>
                         <div class="col">
                             <label for="last-name">Last Name</label>
-                            <input type="text" class="form-control" name="last_name" id="last_name" value="{{ form.last_name.value }}" placeholder="Enter last name" required>
+                            <input type="text" class="form-control text-white" name="last_name"  value="{{ form.last_name.value }}" placeholder="Enter last name" required>
                         </div>
                         <div class="col">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" name="email" id="email" value="{{ form.email.value }}" placeholder="Enter email">
+                            <input type="email" class="form-control text-white" name="email" value="{{ form.email.value }}" placeholder="Enter email">
                         </div>
                     
                         <div class="w-100 p-2"></div>
                         <div class="col">
                             <label for="address1">Address 1</label>
-                            <input type="text" class="form-control" name="address_1" id="address_1" value="{{ form.address_1.value }}" placeholder="Enter address 1">
+                            <input type="text" class="form-control text-white" name="address_1"  value="{{ form.address_1.value }}" placeholder="Enter address 1">
                         </div>
                         <div class="col">   
                             <label for="address2">Address 2</label>
-                            <input type="text" class="form-control" name="address_2" id="address_2" value="{{ form.address_2.value }}" placeholder="Enter address 2">
+                            <input type="text" class="form-control text-white" name="address_2"  value="{{ form.address_2.value }}" placeholder="Enter address 2">
                         </div>
 
                         <div class="w-100 p-2"></div>
                         <div class="col">
                             <label for="city">City</label>
-                            <input type="text" class="form-control" name="city" id="city" value="{{ form.city.value }}" placeholder="Enter city">
+                            <input type="text" class="form-control text-white" name="city" value="{{ form.city.value }}" placeholder="Enter city">
                         </div>
                         <div class="col">
                             <label class="state">State</label>
-                            <input type="text" class="form-control" name="state" id="state" value="{{ form.state.value }}" placeholder="Enter city">
+                            <input type="text" class="form-control text-white" name="state" value="{{ form.state.value }}" placeholder="Enter city">
                         </div>
                         <div class="col">
                             <label for="zipcode">Zipcode</label>
-                            <input type="text" class="form-control" name="zipcode" id="zipcode" value="{{ form.zipcode.value }}" placeholder="Enter zipcode">
+                            <input type="text" class="form-control text-white" name="zipcode" value="{{ form.zipcode.value }}" placeholder="Enter zipcode">
                         </div>
                     </div>
                 </div>
                 <div class="card-body text-center">
-                    <button type="submit" class="btn btn-primary btn-rounded btn-lg text-center">Save</button>
+                    <button type="submit" class="btn btn-outline-primary btn-rounded btn-lg text-center">Save</button>
                 </div>
             </form>
         </div>
@@ -61,64 +61,3 @@
 </section>
 
 {% endblock %}
-
-<input type="file" id="fileField" name="profile_pic" accept="media/contacts" hidden="true">
-
-{% if contact.profile_pic  %}
-<label for="fileField"><img src="{{ contact.profile_pic.url }}"
-class="rounded img-fluid" style="width: 150px; height: 150px; background-size: cover;" /></label>
-<input type="file" id="fileField" accept="media/profile_pic" name="profile_pic" style="font-size: 1.2em;" hidden="true">
-{% else %}
-<label for="fileField"><img src="/media/static/nopic.png"
-class="rounded img-fluid" style="width: 150px; height: 150px; background-size: cover;" /></label>
-<input type="file" id="fileField" accept="media/profile_pic" name="profile_pic" style="font-size: 1.2em;" hidden="true">
-{% endif %}
-
-<div class="row">
-    <div class="col-md-6">
-    <ul class="list-group list-group-flush ">
-        <li class="list-group-item text-center py-4">
-            <label for="fileField"><img src="{{ contact.profile_pic.url }}"
-            class="rounded-circle img-fluid" style="width: 200px; height: 150px;" /></label>
-            <input type="file" id="fileField" accept="media/profile_pic" name="profile_pic" style="font-size: 1.2em;" hidden="true">
-        </li>
-        <li class="list-group-item list">
-        <label for="first-name">First Name</label>
-        <input type="text" class="form-control" name="first_name" id="first_name" value="{{ form.first_name.value }}" placeholder="Enter first name" required>
-        </li>
-        <li class="list-group-item">
-        <label for="last-name">Last Name</label>
-        <input type="text" class="form-control" name="last_name" id="last_name" value="{{ form.last_name.value }}" placeholder="Enter last name" required>
-        </li>
-        <li class="list-group-item">
-        <label for="email">Email</label>
-        <input type="email" class="form-control" name="email" id="email" value="{{ form.email.value }}" placeholder="Enter email">
-        </li>
-    </ul>
-    </div>
-    <div class="col-md-6">
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">
-        <label for="address1">Address 1</label>
-        <input type="text" class="form-control" name="address_1" id="address_1" value="{{ form.address_1.value }}" placeholder="Enter address 1">
-        </li>
-        <li class="list-group-item">
-        <label for="address2">Address 2</label>
-        <input type="text" class="form-control" name="address_2" id="address_2" value="{{ form.address_2.value }}" placeholder="Enter address 2">
-        </li>
-        <li class="list-group-item">
-        <label for="city">City</label>
-        <input type="text" class="form-control" name="city" id="city" value="{{ form.city.value }}" placeholder="Enter city">
-        </li>
-        <li class="list-group-item">
-        <label class="state">State</label>
-        <input type="text" class="form-control" name="state" id="state" value="{{ form.state.value }}" placeholder="Enter city">
-        </li>
-        <li class="list-group-item">
-        <label for="zipcode">Zipcode</label>
-        <input type="text" class="form-control" name="zipcode" id="zipcode" value="{{ form.zipcode.value }}" placeholder="Enter zipcode">
-        </li>
-    </ul>
-    </div>
-</div>
-</div>

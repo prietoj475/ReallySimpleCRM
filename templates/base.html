@@ -18,14 +18,14 @@
     }
 
     .select:hover{
-            background-color: #90909017;
-            border-radius: 10px;
-          }
+      background-color: #90909017;
+      border-radius: 10px;
+    }
   </style>
 </head>
 <body class="gradient-custom">
-  <nav class="navbar bg-dark" data-bs-theme="dark">
-    <div class="container">
+  <nav class="navbar sticky-top navbar-expand-sm bg-dark" data-bs-theme="dark">
+    <div class="container-fluid">
       {% if user.is_authenticated %}
           <a class="navbar-brand" href="{% url 'contacts:listcontacts' %}">
             <span>RealSimpleCRM</span>
@@ -35,24 +35,27 @@
               <span>RealSimpleCRM</span>
           </a>
       {% endif %}
-    </div>
-    <div class="navbar-nav ms-auto">
-      {% if user.is_authenticated %}
-          <a href="{% url 'contacts:listcontacts' %}" class="navbar-brand btn btn-primary btn-rounded btn-md">Contacts</a>
-          <form id="SignOutform" style='display: none;' method="POST" action="{% url 'accounts:logoutuser' %}">
-              {% csrf_token %} 
-          </form>
-          <span class="navbar-brand">
-              <button type="submit" form="SignOutform" class="btn btn-outline-light btn-md px-5"><strong>Sign Out</strong></button>
-          </span>
-      {% else %} 
-          <a class="navbar-brand" href="{% url 'accounts:loginuser' %}">
-            Login
-          </a>
-          <a href="{% url 'accounts:register' %}" class="navbar-brand">
-          <strong>Sign up</strong>
-          </a>
-      {% endif %}
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav ms-auto">
+          {% if user.is_authenticated %}
+            <div class="nav-item">
+              <a class="nav-link btn" href="{% url 'contacts:listcontacts' %}">Contacts</a>
+            </div>
+            <div class="nav-item">
+              <form id="SignOutform" style='display: none;' method="POST" action="{% url 'accounts:logoutuser' %}">
+                  {% csrf_token %} 
+              </form>
+                <button type="submit" form="SignOutform" class="nav-link"><strong>Sign Out</strong></button>
+            </div>
+          {% else %}
+            <div class="nav-item">
+              <a class="nav-link btn" href="{% url 'accounts:loginuser' %}">Login</a>
+            </div>
+            <div class="nav-item">
+              <a href="{% url 'accounts:register' %}" class="nav-link btn"><strong>Sign up</strong></a>
+            </div>
+          {% endif %}
+        </div>
     </div>
   </nav>
 

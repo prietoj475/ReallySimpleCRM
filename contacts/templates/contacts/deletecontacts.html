@@ -9,18 +9,17 @@
                     {% csrf_token %}
                     <div class="card" style="border-radius: 15px;">
                         <div class="card-body">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item text-center py-4">
-                                    <h4 class="card-title text-danger text-center"><strong>Are you sure you want to delete contact</strong></h4>
-                                </li>
-                                <li class="list-group-item text-center py-4">
-                                    <h2 class="card-title text-center">{{ contact.first_name }} {{ contact.last_name }}</h2>
-                                </li>
+                            <div class="col"></div>
+                                <a href="{% url 'contacts:detailcontacts' contact.id %}" class="btn-close btn-outline-light btn-close-white float-end" aria-label="Close"></a>
+                            </div>
+                            <div class="col">
+                                <h4 class="card-title text-danger text-center"><strong>DELETE CONTACT:</strong></h4>
+                                <h2 class="card-text text-center text-white">{{ contact.first_name }} {{ contact.last_name }}</h2>
+                            </div>
+                            <div class="card-body text-center">
+                                <button type="submit" class="btn btn-outline-danger btn-rounded btn-lg float-center">Delete</button>   
+                            </div>
                         </div> 
-                        <div class="card-body text-center">
-                            <button type="submit" class="btn btn-danger btn-rounded btn-md float-center">Delete</button>
-                            <a href="{% url 'contacts:detailcontacts' contact.id %}" class="btn btn-primary btn-rounded btn-md float-center">Cancel</a>
-                        </div>
                     </div>
                 </form>
             </div>
@@ -28,10 +27,3 @@
     </div>           
 </section>
 {% endblock %}
-
-<form method="post">
-    {% csrf_token %}
-    <p>Are you sure you want to delete "{{ contact.first_name }}"?</p>
-    <button type="submit">Delete</button>
-    <a href="{% url 'contacts:detailcontacts' contact.id %}">Cancel</a>
-</form>
