@@ -2,61 +2,63 @@
 
 {% block content %}
 <section class="vh-100" data-bs-theme="dark">
-    <div class="container text-center py-5 h-100">
-        <div class="card " style="border-radius: 15px;">
-            <form method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="card-body">
-                    <h2 class="card-title text-center">Contact Information</h2>
-                    <div class="row d-flex justify-content-center">
-                        <div class="container py-5 h-100 text-center">
-                            <label for="fileField"><img src="{{ contact.profile_pic.url }}"
-                            class="rounded-circle img-fluid" style="width: 200px; height: 150px;" /></label>
-                            <input type="file" id="fileField" accept="media/profile_pic" name="profile_pic" style="font-size: 1.2em;" hidden="true">
-                        </div>
-                        <div class="col">
-                            <label for="first-name">First Name</label>
-                            <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Enter first name" required>
-                        </div>
-                        <div class="col">
-                            <label for="last-name">Last Name</label>
-                            <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Enter last name" required>
-                        </div>
-                        <div class="col">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Enter email">
-                        </div>
-                    
-                        <div class="w-100 p-2"></div>
-                        <div class="col">
-                            <label for="address1">Address 1</label>
-                            <input type="text" class="form-control" name="address_1" id="address_1" placeholder="Enter address 1">
-                        </div>
-                        <div class="col">   
-                            <label for="address2">Address 2</label>
-                            <input type="text" class="form-control" name="address_2" id="address_2" placeholder="Enter address 2">
-                        </div>
-                        <div class="col">
-                            <label for="city">City</label>
-                            <input type="text" class="form-control" name="city" id="city" placeholder="Enter city">
-                        </div>
-                        <div class="col">
-                            <label class="state">State</label>
-                            <input type="text" class="form-control" name="state" id="state" placeholder="Enter city">
-                        </div>
-                        <div class="col">
-                            <label for="zipcode">Zipcode</label>
-                            <input type="text" class="form-control" name="zipcode" id="zipcode" placeholder="Enter zipcode">
+    <div class="container col-md-6 text-center py-5 h-100">
+            <div class="card" style="border-radius: 15px;">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="card-body">
+                        <h2 class="card-title text-center">Contact Information</h2>
+                        <div class="row d-flex justify-content-center">
+                            <div class="container py-5 h-100 text-center">
+                                <label for="fileField"><img src="{{ contact.profile_pic.url }}"
+                                class="rounded-circle img-fluid" style="width: 200px; height: 200px;" /></label>
+                                <input type="file" id="fileField" accept="media/profile_pic" name="profile_pic" style="font-size: 1.2em;" hidden="true">
+                            </div>
+                            <div class="col">
+                                <label for="first-name">First Name</label>
+                                <h4> {{ contact.first_name }}</h4>
+                            </div>
+                            <div class="col">
+                                <label for="last-name">Last Name</label>
+                                <h4> {{ contact.last_name }}</h4>
+                            </div>
+                            <div class="col">
+                                <label for="email">Email</label>
+                                <h4> {{ contact.email }}</h4>
+                            </div>
+                        
+                            <div class="w-100 p-2"></div>
+                            <div class="col">
+                                <label for="address1">Address 1</label>
+                                <h4> {{ contact.address_1 }}</h4>
+                            </div>
+                            <div class="col">   
+                                <label for="address2">Address 2</label>
+                                <h4> {{ contact.address_2 }}</h4>
+                            </div>
+                            
+                            <div class="w-100 p-2"></div>
+                            <div class="col">
+                                <label for="city">City</label>
+                                <h4> {{ contact.city }}</h4>
+                            </div>
+                            <div class="col">
+                                <label class="state">State</label>
+                                <h4> {{ contact.state }}</h4>
+                            </div>
+                            <div class="col">
+                                <label for="zipcode">Zipcode</label>
+                                <h4> {{ contact.zipcode }}</h4>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="card-body">
-                    <a href="{% url 'contacts:updatecontacts' pk=contact.pk %}" class="btn btn-primary btn-rounded btn-lg">Update</a>
-                    <a href="{% url 'contacts:deletecontacts' pk=contact.pk %}" class="btn btn-danger btn-rounded btn-lg">Delete</a>
+                    <div class="card-body">
+                        <a href="{% url 'contacts:updatecontacts' pk=contact.pk %}" class="btn btn-primary btn-rounded btn-lg">Update</a>
+                        <a href="{% url 'contacts:deletecontacts' pk=contact.pk %}" class="btn btn-danger btn-rounded btn-lg">Delete</a>
 
-                </div>
-            </form>
-        </div>
+                    </div>
+                </form>
+            </div>
     </div>
 </section>
 {% endblock %}

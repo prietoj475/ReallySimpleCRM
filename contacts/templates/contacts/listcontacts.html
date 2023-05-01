@@ -11,7 +11,7 @@
                 {% for contact in contact_list %}
                 <div class="col-md-6 col-xl-4 p-2">
                     <a href="{% url 'contacts:detailcontacts' contact.id %}" style="text-decoration: none;">
-                        <div class="card" style="border-radius: 15px;">
+                        <div class="card select" style="border-radius: 15px;">
                             <div class="card-body text-center">
                                 <div class="mt-3 mb-4">
                                     <img src="{{ contact.profile_pic.url }}"

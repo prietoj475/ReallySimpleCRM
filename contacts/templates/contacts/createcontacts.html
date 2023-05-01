@@ -2,7 +2,7 @@
 
 {% block content %}
 <section class="vh-100" data-bs-theme="dark">
-    <div class="container text-center py-5 h-100">
+    <div class="container col-md-6 text-center py-5 h-100">
         <div class="card " style="border-radius: 15px;">
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
@@ -11,7 +11,7 @@
                     <div class="row">
                         <div class="container py-5 h-100 text-center">
                             <label for="fileField"><img src="/media/static/nopic.png"
-                            class="rounded-circle img-fluid" style="width: 200px; height: 150px;" /></label>
+                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" /></label>
                             <input type="file" id="fileField" accept="media/profile_pic" name="profile_pic" style="font-size: 1.2em;" hidden="true">
                         </div>
                         <div class="col">
@@ -36,6 +36,8 @@
                             <label for="address2">Address 2</label>
                             <input type="text" class="form-control" name="address_2" id="address_2" placeholder="Enter address 2">
                         </div>
+
+                        <div class="w-100 p-2"></div>
                         <div class="col">
                             <label for="city">City</label>
                             <input type="text" class="form-control" name="city" id="city" placeholder="Enter city">
@@ -51,7 +53,7 @@
                     </div>
                 </div>
                 <div class="card-body text-center">
-                    <button type="submit" class="btn btn-primary btn-rounded btn-lg text-center">Save</button>
+                    <button type="submit" class="btn btn-primary btn-rounded btn-lg text-center">Create</button>
                 </div>
             </form>
         </div>
